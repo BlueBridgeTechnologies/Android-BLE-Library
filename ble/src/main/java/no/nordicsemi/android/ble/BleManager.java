@@ -2070,7 +2070,7 @@ public abstract class BleManager<E extends BleManagerCallbacks> extends TimeoutH
 		}
 	}
 
-	private void runOnUiThread(final Runnable runnable) {
+	protected void runOnUiThread(final Runnable runnable) {
 		if (Looper.myLooper() != Looper.getMainLooper()) {
 			mHandler.post(runnable);
 		} else {
@@ -3108,7 +3108,7 @@ public abstract class BleManager<E extends BleManagerCallbacks> extends TimeoutH
 		 */
 		@SuppressWarnings("ConstantConditions")
 		@MainThread
-		private synchronized void nextRequest(final boolean force) {
+		protected synchronized void nextRequest(final boolean force) {
 			// Is the manager closed()?
 			if (mGattCallback == null) {
 				return;
